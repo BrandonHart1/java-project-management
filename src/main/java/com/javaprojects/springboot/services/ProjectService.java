@@ -7,4 +7,6 @@ import com.javaprojects.springboot.entity.Project;
 public interface ProjectService 
 {
 	List<Project>getAllProjects(); 
+	
+	Project saveProject(Project project);
 }

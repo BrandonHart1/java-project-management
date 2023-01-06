@@ -3,6 +3,8 @@ package com.javaprojects.springboot.controllers;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import com.javaprojects.springboot.entity.Project;
 import com.javaprojects.springboot.services.ProjectService;
@@ -37,6 +39,11 @@ public class ProjectController
 	}
 	
 	// -------- Form Handler --------
-	
+	@PostMapping("/projects")
+	public String saveProject(@ModelAttribute("project") Project project)
+	{
+		projectService.saveProject(project);
+		return "redirect:/projects";
+	}
 	
 }
