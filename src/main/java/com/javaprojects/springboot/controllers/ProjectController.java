@@ -4,6 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.javaprojects.springboot.entity.Project;
@@ -46,4 +47,35 @@ public class ProjectController
 		return "redirect:/projects";
 	}
 	
+	// -------- Handle Update Request --------
+	@GetMapping("/projects/edit/{id}")
+	public String editProjectForm(@PathVariable Long id, Model model)
+	{
+		model.addAttribute("project", projectService.getProjectById(id));
+		return "edit_project";
+	}
+	
+	@PostMapping("/projects/{id}")
+	public String updateProject(@PathVariable Long id, @ModelAttribute("project") Project project, Model model)
+	{
+		// -------- Get project from the database by the id --------
+		Project existingProject = projectService.getProjectById(id);
+		existingProject.setId(id);
+		existingProject.setProjectName(project.getProjectName());
+		existingProject.setFirstName(project.getFirstName());
+		existingProject.setLastName(project.getLastName());
+		existingProject.setEmail(project.getEmail());
+		
+		// -------- Save updated project --------
+		projectService.updateProject(existingProject);
+		return "redirect:/projects";
+	}
+	
+	// -------- Delete Project Request --------
+	@GetMapping("/projects/{id}")
+	public String deleteProject(@PathVariable Long id)
+	{
+		projectService.deleteProjectById(id);
+		return "redirect:/projects";
+	}
 }

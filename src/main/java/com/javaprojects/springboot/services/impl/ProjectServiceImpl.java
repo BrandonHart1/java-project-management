@@ -34,4 +34,23 @@ public class ProjectServiceImpl implements ProjectService
 		return projectRepository.save(project);
 	}
 
+
+	@Override
+	public Project getProjectById(Long id) {
+		return projectRepository.findById(id).get();
+	}
+
+
+	@Override
+	public Project updateProject(Project project) {
+		return projectRepository.save(project);
+	}
+
+
+	@Override
+	public void deleteProjectById(Long id) 
+	{
+		projectRepository.deleteById(id);
+	}
+
 }
