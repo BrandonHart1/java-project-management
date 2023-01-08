@@ -21,14 +21,14 @@ public class JavaProjectManagementSystemApplication implements CommandLineRunner
 	@Override
 	public void run(String... args) throws Exception {
 		
-		Project project1 = new Project("Java Project", "John", "Johnson", "john@github.com");
-		projectRepository.save(project1);
-		
-		Project project2 = new Project("Python Project", "Will", "Williams", "will@github.com");
-		projectRepository.save(project2);
-		
-		Project project3 = new Project("React Project", "Frank", "Frankfort", "frank@github.com");
-		projectRepository.save(project3);
+//		Project project1 = new Project("Java Project", "John", "Johnson", "john@github.com");
+//		projectRepository.save(project1);
+//		
+//		Project project2 = new Project("Python Project", "Will", "Williams", "will@github.com");
+//		projectRepository.save(project2);
+//		
+//		Project project3 = new Project("React Project", "Frank", "Frankfort", "frank@github.com");
+//		projectRepository.save(project3);
 
 	}
 
